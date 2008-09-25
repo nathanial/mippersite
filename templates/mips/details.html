@@ -1,0 +1,34 @@
+{% extends "mips/base.html" %}
+{% block head %}
+<script type="text/javascript">
+  var program_name = "{{ program.name }}";
+</script>
+<link rel="stylesheet" type="text/css" href="/styles/ext-all.css" />
+<link rel="stylesheet" type="text/css" href="/styles/xtheme-gray.css" />
+<script type="text/javascript" src="/javascript/jquery.js"></script>
+<script type="text/javascript" src="/javascript/form.js"></script>
+<script type="text/javascript" src="/javascript/ext-jquery-adapter.js"></script>
+<script type="text/javascript" src="/javascript/ext-all-debug.js"></script>
+<script type="text/javascript" src="/javascript/details.js"></script>
+
+{% endblock %}
+
+{% block sidebar %}
+Commands
+<ul>
+  <li><a id="home" href="#">Back</a></li>
+</ul>
+{% endblock %}
+
+{% block content %}
+<h4> {{program.name}} <span id="editable" style="display:none">(editable)</span></h4>
+<form id="code_form" method="post">
+  <input id="update" type="submit" value="update" />
+  <input id="edit" type="submit" value="edit" />
+  <input id="run" type="submit" value="run" />
+  <textarea name="code" id="code_view" class="code" rows="40" readonly="true">
+{{program.code}}</textarea>
+</form>
+<div id="blah">
+</div>
+{% endblock %}

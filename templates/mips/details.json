@@ -1,0 +1,6 @@
+{ "registers" : [
+  {% for item in registers %}
+    { "name" : "{{item.name}}", "value" : {{item.value}} },
+  {% endfor %}
+  ],
+  "output" : {{output}}}
