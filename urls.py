@@ -9,6 +9,7 @@ urlpatterns = patterns('',
                        (r'^mips/program/[^/]+/run/$', 'gaesite.mips.views.run'),
                        (r'^mips/add/$', 'gaesite.mips.views.add'),
                        (r'^mips/del/$', 'gaesite.mips.views.delete'),
+                       (r'^mips/program/[^/]+/reset/$', 'gaesite.mips.views.reset'),
                        (r'^javascript/(?P<path>.*)$', 'django.views.static.serve', {'document_root':'/Development/Projects/gaesite/static/javascript'}),
                        (r'^styles/(?P<path>.*)$', 'django.views.static.serve', {'document_root':'/Development/Projects/gaesite/static/styles'}),
                        (r'^images/(?P<path>.*)$', 'django.views.static.serve', {'document_root':'/Development/Projects/gaesite/static/images'}))

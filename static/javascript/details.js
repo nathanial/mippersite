@@ -10,6 +10,16 @@ function set_code_view_uneditable(){
     $('#editable').hide();
 }
 
+function create_output_panel(html){
+    var output = new Ext.Panel({
+        width: 200,
+        height: 300,
+        margins : '3 3 3 3',
+        title : 'Output',
+        html : html});
+    return output;
+}
+
 $(document).ready(function(){
 
     Ext.state.Manager.setProvider(new Ext.state.CookieProvider());
@@ -76,16 +86,20 @@ $(document).ready(function(){
         var options = {
             url: ('/mips/program/' + program_name + '/run/'),
             success: function(responseText, statusText) {
-                data = eval("(" + responseText + ")");
+                var data = eval("(" + responseText + ")");
                 if(data.exception){
                     alert("Exception : " + data.exception);
                 }
                 else{
-                    lines = data.output
+                    var lines = data.output;
+                    var htmlString = ""
                     for(i = 0; i < lines.length; i++){
-                        output.html += lines[i] + "<br />";
+                        htmlString += lines[i] + "<br />";
                     }
                     store.loadData(data);
+                    win.remove(output);
+                    output = create_output_panel(htmlString);
+                    win.add(output);
                     win.show(Ext.get('run'));
                 }
             }
@@ -95,5 +109,9 @@ $(document).ready(function(){
     $('#update').click(function(event){
         event.preventDefault();
         $('#code_form').attr('action', "/mips/program/" + program_name + "/update/").submit();
+    });
+    $('#reset').click(function(event){
+        event.preventDefault();
+        $('#code_form').attr('action', "/mips/program/" + program_name + "/reset/").submit();
     });
 });
