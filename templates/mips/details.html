@@ -17,12 +17,14 @@
 Commands
 <ul>
   <li><a id="home" href="#">Back</a></li>
+  <li><a id="logout" href="/logout/">Logout</a></li>
 </ul>
 {% endblock %}
 
 {% block content %}
 <h4> {{program.name}} <span id="editable" style="display:none">(editable)</span></h4>
 <form id="code_form" method="post">
+  <input name="name" type="text" value="{{program.name}}" style="display:none" />
   <input id="update" type="submit" value="update" />
   <input id="edit" type="submit" value="edit" />
   <input id="reset" type="submit" value="reset" />

@@ -1,4 +1,5 @@
-# Django settings for gaesite project.
+# Django settings for mippersite project.
+import os
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -9,8 +10,8 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASE_ENGINE = 'sqlite3'
-DATABASE_NAME = '/Development/Projects/gaesite/dev.db'
+DATABASE_ENGINE = 'appengine'
+DATABASE_NAME = ''
 DATABASE_USER = ''             # Not used with sqlite3.
 DATABASE_PASSWORD = ''         # Not used with sqlite3.
 DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
@@ -58,21 +59,15 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
-    'django.middleware.common.CommonMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.middleware.doc.XViewMiddleware',
 )
 
-ROOT_URLCONF = 'gaesite.urls'
+ROOT_URLCONF = 'urls'
 
-TEMPLATE_DIRS = ("/Development/Projects/gaesite/templates/")
+ROOT_PATH = os.path.dirname(__file__)
+
+TEMPLATE_DIRS = (ROOT_PATH + "/templates",)
 
 INSTALLED_APPS = (
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.sites',
-    'gaesite.mips',
-    'django.contrib.sessions'
+    'appengine_django',
+    'mips',
 )

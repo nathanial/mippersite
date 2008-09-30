@@ -1,79 +1,111 @@
 from django.shortcuts import render_to_response
-from gaesite.mips.models import UserProgram
+from mips.models import UserProgram, StateInfo
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from mipper.mips import ProgramFactory
 from mipper.ops.math import MipsOverflowException
 from django.template.loader import render_to_string
-import re
 import mipsrunner
+from google.appengine.api import users
+import pickle
+import logging
+import helpers
 
+def Authenticated(view):
+    def f(*args, **kwargs):
+        user = users.get_current_user()
+        if user:
+            return view(user, *args, **kwargs)
+        else:
+            return login(None)
+    return f
 
 def index(request):
-    programs = UserProgram.objects.all().order_by("name")
-    return render_to_response("mips/index.html", {"programs": programs})
+    logged_in = users.get_current_user() != None
+    return render_to_response("mips/index.html", {'logged_in' : logged_in})
 
-def details(request, name):
-    current_program = UserProgram.objects.get(name=name)
-    request.session['current_program'] = current_program
-    return render_to_response("mips/details.html", {"program" : current_program})
+def login(request):
+    return render_to_response("mips/login.html",
+                              {"login_url": users.create_login_url("/programs/")})
 
-def update(request):
-    request.session['suspended'] = False
-    current_program = request.session.get('current_program')
+def logout(request):
+    return render_to_response("mips/logout.html",
+                              {"logout_url": users.create_logout_url("/")})
+
+@Authenticated
+def programs(user, request):
+    programs = UserProgram.all().filter("user =", user).fetch(10)
+    return render_to_response("mips/programs.html", {"programs": programs})
+
+@Authenticated
+def details(user, request, name):
+    current_program = UserProgram.all().filter("name =", name).filter("user =", user).get()
+    return render_to_response("mips/details.html", {'program' : current_program})
+
+@Authenticated
+def update(user, request):
+    name = request.POST['name']
+    current_program = UserProgram.all().filter("name =", name).filter("user =", user).get()
     current_program.code = request.POST['code']
-    current_program.save()
-    return HttpResponseRedirect(reverse('gaesite.mips.views.details', kwargs={'name':current_program.name}))
+    current_program.put()
+    return HttpResponseRedirect(reverse('mips.views.details', kwargs={'name':current_program.name}))
 
-def add(request):
+@Authenticated
+def add(user, request):
     name = request.POST['name']
-    new_program = UserProgram(name=name, code="")
-    new_program.save()
-    return HttpResponseRedirect(reverse('gaesite.mips.views.index'))
+    state_info = StateInfo()
+    state_info.put()
+    new_program = UserProgram(name=name, code="", user=user, state=state_info)
+    new_program.put()
+    return HttpResponseRedirect(reverse('mips.views.programs'))
 
-def delete(request):
+@Authenticated
+def delete(user, request):
     name = request.POST['name']
-    prog = UserProgram.objects.get(name=name)
+    prog = UserProgram.all().filter("name =", name).filter("user =",user).get()
     prog.delete();
-    return HttpResponseRedirect(reverse('gaesite.mips.views.index'))
+    return HttpResponseRedirect(reverse('mips.views.programs'))
 
-def reset(request):
-    current_program = request.session['current_program']
-    request.session['suspended'] = False
-    return HttpResponseRedirect(reverse('gaesite.mips.views.details', kwargs={'name':current_program.name}))
+@Authenticated
+def reset(user, request):
+    name = request.POST['name']
+    query = UserProgram.all()
+    query.filter("name =", name)
+    prog = query.filter("user =", user).get()
+    return HttpResponseRedirect(reverse('mips.views.details',
+                                        kwargs={'name':prog.name}))
 
-def run(request):
-    current_program = request.session.get('current_program')
+@Authenticated
+def run(user, request, name):
+    query = UserProgram.all()
+    query.filter("name =", name)
+    query.filter("user =", user)
+    prog = query.get()
 
-    result = None
-    if request.session.get('suspended'):
-        print "Running from Break"
-        state = request.session['state']
-        result = mipsrunner.run_with_state(state, request.session['output'])
+    result = {}
+
+    if prog.state.suspended:
+        logging.info("resuming from suspension")
+        state = pickle.loads(prog.state.state_blob)
+        output = prog.state.output
+        result = mipsrunner.run_with_state(state, output)
     else:
-        print "Running from Beginning"
-        prog_text = mipsrunner.format_user_program(current_program.code)
+        logging.info("executing program")
+        prog_text = mipsrunner.format_user_program(str(prog.code))
         result = mipsrunner.run_program(prog_text, [])
 
     if not result.get('exception'):
-        request.session['suspended'] = result['suspended']
-        request.session['state'] = result['state']
-        request.session['output'] = result['output']
+        prog.state.suspended = result['suspended']
+        prog.state.state_blob = pickle.dumps(result['state'], 2)
+        prog.state.output = result['output']
+        prog.state.put()
+        prog.put()
 
-        non_numerical_key = re.compile(r"\$[a-z].*")
-        registers = []
-        for k,v in result['state'].registers.items():
-            if non_numerical_key.match(k):
-                registers.append({'name': str(k), 'value' : str(v)})
-
-        output = "".join(map(lambda x : str(x), result['output'])).splitlines()
-        json_data = render_to_string('mips/details.json', { 'registers' : registers,
-                                                        'output' : output })
-
-        print output
-        response = HttpResponse(json_data, mimetype="application/javascript")
-        return response
+        registers = helpers.extract_registers(result['state'])
+        output = helpers.format_output(result['output'])
+        json_data = render_to_string("mips/details.json",
+                                     {'registers' : registers,
+                                      'output' : output})
+        return HttpResponse(json_data, mimetype="application/javascript")
     else:
-        print "Exception"
         return HttpResponse("{'exception': '%s'}" % result['exception'], mimetype="application/javascript")
-

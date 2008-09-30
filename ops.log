@@ -55195,3 +55195,457 @@ DEBUG executing LI $v0 1
 DEBUG executing MOVE $a0 $t6
 DEBUG executing SYSCALL
 DEBUG executing JR $ra
+DEBUG executing LI $t0 0
+DEBUG executing LI $t1 1
+DEBUG executing LI $t3 0
+DEBUG executing LI $t4 10
+DEBUG executing LI $t5 0
+DEBUG executing LI $t6 1
+DEBUG executing LI $t7 2
+DEBUG executing JAL to Loop
+DEBUG executing JAL to print_b
+DEBUG executing LI $v0 1
+DEBUG executing MOVE $a0 $t1
+DEBUG executing SYSCALL
+DEBUG executing JR $ra
+DEBUG executing JAL to print_space
+DEBUG executing LI $v0 4
+DEBUG executing LA $a0 space
+DEBUG executing SYSCALL
+DEBUG executing JR $ra
+DEBUG executing MOVE $t2 $t0
+DEBUG executing MOVE $t0 $t1
+DEBUG executing ADD $t1 $t0 $t2
+DEBUG executing ADDI $t3 $t3 1
+DEBUG executing DIV $t1 $t7
+DEBUG executing MFHI $t8
+DEBUG executing BEQ $t8 $zero even
+DEBUG executing JUMP to odd
+DEBUG executing ADD $t6 $t6 $t1
+DEBUG executing BLT $t3 $t4 Loop
+DEBUG executing JAL to print_b
+DEBUG executing LI $v0 1
+DEBUG executing MOVE $a0 $t1
+DEBUG executing SYSCALL
+DEBUG executing JR $ra
+DEBUG executing JAL to print_space
+DEBUG executing LI $v0 4
+DEBUG executing LA $a0 space
+DEBUG executing SYSCALL
+DEBUG executing JR $ra
+DEBUG executing MOVE $t2 $t0
+DEBUG executing MOVE $t0 $t1
+DEBUG executing ADD $t1 $t0 $t2
+DEBUG executing ADDI $t3 $t3 1
+DEBUG executing DIV $t1 $t7
+DEBUG executing MFHI $t8
+DEBUG executing BEQ $t8 $zero even
+DEBUG executing ADD $t5 $t5 $t1
+DEBUG executing BLT $t3 $t4 Loop
+DEBUG executing JAL to print_b
+DEBUG executing LI $v0 1
+DEBUG executing MOVE $a0 $t1
+DEBUG executing SYSCALL
+DEBUG executing JR $ra
+DEBUG executing JAL to print_space
+DEBUG executing LI $v0 4
+DEBUG executing LA $a0 space
+DEBUG executing SYSCALL
+DEBUG executing JR $ra
+DEBUG executing MOVE $t2 $t0
+DEBUG executing MOVE $t0 $t1
+DEBUG executing ADD $t1 $t0 $t2
+DEBUG executing ADDI $t3 $t3 1
+DEBUG executing DIV $t1 $t7
+DEBUG executing MFHI $t8
+DEBUG executing BEQ $t8 $zero even
+DEBUG executing JUMP to odd
+DEBUG executing ADD $t6 $t6 $t1
+DEBUG executing BLT $t3 $t4 Loop
+DEBUG executing JAL to print_b
+DEBUG executing LI $v0 1
+DEBUG executing MOVE $a0 $t1
+DEBUG executing SYSCALL
+DEBUG executing JR $ra
+DEBUG executing JAL to print_space
+DEBUG executing LI $v0 4
+DEBUG executing LA $a0 space
+DEBUG executing SYSCALL
+DEBUG executing JR $ra
+DEBUG executing MOVE $t2 $t0
+DEBUG executing MOVE $t0 $t1
+DEBUG executing ADD $t1 $t0 $t2
+DEBUG executing ADDI $t3 $t3 1
+DEBUG executing DIV $t1 $t7
+DEBUG executing MFHI $t8
+DEBUG executing BEQ $t8 $zero even
+DEBUG executing JUMP to odd
+DEBUG executing ADD $t6 $t6 $t1
+DEBUG executing BLT $t3 $t4 Loop
+DEBUG executing JAL to print_b
+DEBUG executing LI $v0 1
+DEBUG executing MOVE $a0 $t1
+DEBUG executing SYSCALL
+DEBUG executing JR $ra
+DEBUG executing JAL to print_space
+DEBUG executing LI $v0 4
+DEBUG executing LA $a0 space
+DEBUG executing SYSCALL
+DEBUG executing JR $ra
+DEBUG executing MOVE $t2 $t0
+DEBUG executing MOVE $t0 $t1
+DEBUG executing ADD $t1 $t0 $t2
+DEBUG executing ADDI $t3 $t3 1
+DEBUG executing DIV $t1 $t7
+DEBUG executing MFHI $t8
+DEBUG executing BEQ $t8 $zero even
+DEBUG executing ADD $t5 $t5 $t1
+DEBUG executing BLT $t3 $t4 Loop
+DEBUG executing JAL to print_b
+DEBUG executing LI $v0 1
+DEBUG executing MOVE $a0 $t1
+DEBUG executing SYSCALL
+DEBUG executing JR $ra
+DEBUG executing JAL to print_space
+DEBUG executing LI $v0 4
+DEBUG executing LA $a0 space
+DEBUG executing SYSCALL
+DEBUG executing JR $ra
+DEBUG executing MOVE $t2 $t0
+DEBUG executing MOVE $t0 $t1
+DEBUG executing ADD $t1 $t0 $t2
+DEBUG executing ADDI $t3 $t3 1
+DEBUG executing DIV $t1 $t7
+DEBUG executing MFHI $t8
+DEBUG executing BEQ $t8 $zero even
+DEBUG executing JUMP to odd
+DEBUG executing ADD $t6 $t6 $t1
+DEBUG executing BLT $t3 $t4 Loop
+DEBUG executing JAL to print_b
+DEBUG executing LI $v0 1
+DEBUG executing MOVE $a0 $t1
+DEBUG executing SYSCALL
+DEBUG executing JR $ra
+DEBUG executing JAL to print_space
+DEBUG executing LI $v0 4
+DEBUG executing LA $a0 space
+DEBUG executing SYSCALL
+DEBUG executing JR $ra
+DEBUG executing MOVE $t2 $t0
+DEBUG executing MOVE $t0 $t1
+DEBUG executing ADD $t1 $t0 $t2
+DEBUG executing ADDI $t3 $t3 1
+DEBUG executing DIV $t1 $t7
+DEBUG executing MFHI $t8
+DEBUG executing BEQ $t8 $zero even
+DEBUG executing JUMP to odd
+DEBUG executing ADD $t6 $t6 $t1
+DEBUG executing BLT $t3 $t4 Loop
+DEBUG executing JAL to print_b
+DEBUG executing LI $v0 1
+DEBUG executing MOVE $a0 $t1
+DEBUG executing SYSCALL
+DEBUG executing JR $ra
+DEBUG executing JAL to print_space
+DEBUG executing LI $v0 4
+DEBUG executing LA $a0 space
+DEBUG executing SYSCALL
+DEBUG executing JR $ra
+DEBUG executing MOVE $t2 $t0
+DEBUG executing MOVE $t0 $t1
+DEBUG executing ADD $t1 $t0 $t2
+DEBUG executing ADDI $t3 $t3 1
+DEBUG executing DIV $t1 $t7
+DEBUG executing MFHI $t8
+DEBUG executing BEQ $t8 $zero even
+DEBUG executing ADD $t5 $t5 $t1
+DEBUG executing BLT $t3 $t4 Loop
+DEBUG executing JAL to print_b
+DEBUG executing LI $v0 1
+DEBUG executing MOVE $a0 $t1
+DEBUG executing SYSCALL
+DEBUG executing JR $ra
+DEBUG executing JAL to print_space
+DEBUG executing LI $v0 4
+DEBUG executing LA $a0 space
+DEBUG executing SYSCALL
+DEBUG executing JR $ra
+DEBUG executing MOVE $t2 $t0
+DEBUG executing MOVE $t0 $t1
+DEBUG executing ADD $t1 $t0 $t2
+DEBUG executing ADDI $t3 $t3 1
+DEBUG executing DIV $t1 $t7
+DEBUG executing MFHI $t8
+DEBUG executing BEQ $t8 $zero even
+DEBUG executing JUMP to odd
+DEBUG executing ADD $t6 $t6 $t1
+DEBUG executing BLT $t3 $t4 Loop
+DEBUG executing JAL to print_b
+DEBUG executing LI $v0 1
+DEBUG executing MOVE $a0 $t1
+DEBUG executing SYSCALL
+DEBUG executing JR $ra
+DEBUG executing JAL to print_space
+DEBUG executing LI $v0 4
+DEBUG executing LA $a0 space
+DEBUG executing SYSCALL
+DEBUG executing JR $ra
+DEBUG executing MOVE $t2 $t0
+DEBUG executing MOVE $t0 $t1
+DEBUG executing ADD $t1 $t0 $t2
+DEBUG executing ADDI $t3 $t3 1
+DEBUG executing DIV $t1 $t7
+DEBUG executing MFHI $t8
+DEBUG executing BEQ $t8 $zero even
+DEBUG executing JUMP to odd
+DEBUG executing ADD $t6 $t6 $t1
+DEBUG executing BLT $t3 $t4 Loop
+DEBUG executing JUMP to end
+DEBUG executing JAL to print_b
+DEBUG executing LI $v0 1
+DEBUG executing MOVE $a0 $t1
+DEBUG executing SYSCALL
+DEBUG executing JR $ra
+DEBUG executing JAL to print_even_sum
+DEBUG executing LI $v0 4
+DEBUG executing LA $a0 even_str
+DEBUG executing SYSCALL
+DEBUG executing LI $v0 1
+DEBUG executing MOVE $a0 $t5
+DEBUG executing SYSCALL
+DEBUG executing JR $ra
+DEBUG executing JAL to print_odd_sum
+DEBUG executing LI $v0 4
+DEBUG executing LA $a0 odd_str
+DEBUG executing SYSCALL
+DEBUG executing LI $v0 1
+DEBUG executing MOVE $a0 $t6
+DEBUG executing SYSCALL
+DEBUG executing JR $ra
+DEBUG executing LI $t0 0
+DEBUG executing LI $t1 1
+DEBUG executing LI $t3 0
+DEBUG executing LI $t4 10
+DEBUG executing LI $t5 0
+DEBUG executing LI $t6 1
+DEBUG executing LI $t7 2
+DEBUG executing JAL to Loop
+DEBUG executing JAL to print_b
+DEBUG executing LI $v0 1
+DEBUG executing MOVE $a0 $t1
+DEBUG executing SYSCALL
+DEBUG executing JR $ra
+DEBUG executing JAL to print_space
+DEBUG executing LI $v0 4
+DEBUG executing LA $a0 space
+DEBUG executing SYSCALL
+DEBUG executing JR $ra
+DEBUG executing MOVE $t2 $t0
+DEBUG executing MOVE $t0 $t1
+DEBUG executing ADD $t1 $t0 $t2
+DEBUG executing ADDI $t3 $t3 1
+DEBUG executing DIV $t1 $t7
+DEBUG executing MFHI $t8
+DEBUG executing BEQ $t8 $zero even
+DEBUG executing JUMP to odd
+DEBUG executing ADD $t6 $t6 $t1
+DEBUG executing BLT $t3 $t4 Loop
+DEBUG executing JAL to print_b
+DEBUG executing LI $v0 1
+DEBUG executing MOVE $a0 $t1
+DEBUG executing SYSCALL
+DEBUG executing JR $ra
+DEBUG executing JAL to print_space
+DEBUG executing LI $v0 4
+DEBUG executing LA $a0 space
+DEBUG executing SYSCALL
+DEBUG executing JR $ra
+DEBUG executing MOVE $t2 $t0
+DEBUG executing MOVE $t0 $t1
+DEBUG executing ADD $t1 $t0 $t2
+DEBUG executing ADDI $t3 $t3 1
+DEBUG executing DIV $t1 $t7
+DEBUG executing MFHI $t8
+DEBUG executing BEQ $t8 $zero even
+DEBUG executing ADD $t5 $t5 $t1
+DEBUG executing BLT $t3 $t4 Loop
+DEBUG executing JAL to print_b
+DEBUG executing LI $v0 1
+DEBUG executing MOVE $a0 $t1
+DEBUG executing SYSCALL
+DEBUG executing JR $ra
+DEBUG executing JAL to print_space
+DEBUG executing LI $v0 4
+DEBUG executing LA $a0 space
+DEBUG executing SYSCALL
+DEBUG executing JR $ra
+DEBUG executing MOVE $t2 $t0
+DEBUG executing MOVE $t0 $t1
+DEBUG executing ADD $t1 $t0 $t2
+DEBUG executing ADDI $t3 $t3 1
+DEBUG executing DIV $t1 $t7
+DEBUG executing MFHI $t8
+DEBUG executing BEQ $t8 $zero even
+DEBUG executing JUMP to odd
+DEBUG executing ADD $t6 $t6 $t1
+DEBUG executing BLT $t3 $t4 Loop
+DEBUG executing JAL to print_b
+DEBUG executing LI $v0 1
+DEBUG executing MOVE $a0 $t1
+DEBUG executing SYSCALL
+DEBUG executing JR $ra
+DEBUG executing JAL to print_space
+DEBUG executing LI $v0 4
+DEBUG executing LA $a0 space
+DEBUG executing SYSCALL
+DEBUG executing JR $ra
+DEBUG executing MOVE $t2 $t0
+DEBUG executing MOVE $t0 $t1
+DEBUG executing ADD $t1 $t0 $t2
+DEBUG executing ADDI $t3 $t3 1
+DEBUG executing DIV $t1 $t7
+DEBUG executing MFHI $t8
+DEBUG executing BEQ $t8 $zero even
+DEBUG executing JUMP to odd
+DEBUG executing ADD $t6 $t6 $t1
+DEBUG executing BLT $t3 $t4 Loop
+DEBUG executing JAL to print_b
+DEBUG executing LI $v0 1
+DEBUG executing MOVE $a0 $t1
+DEBUG executing SYSCALL
+DEBUG executing JR $ra
+DEBUG executing JAL to print_space
+DEBUG executing LI $v0 4
+DEBUG executing LA $a0 space
+DEBUG executing SYSCALL
+DEBUG executing JR $ra
+DEBUG executing MOVE $t2 $t0
+DEBUG executing MOVE $t0 $t1
+DEBUG executing ADD $t1 $t0 $t2
+DEBUG executing ADDI $t3 $t3 1
+DEBUG executing DIV $t1 $t7
+DEBUG executing MFHI $t8
+DEBUG executing BEQ $t8 $zero even
+DEBUG executing ADD $t5 $t5 $t1
+DEBUG executing BLT $t3 $t4 Loop
+DEBUG executing JAL to print_b
+DEBUG executing LI $v0 1
+DEBUG executing MOVE $a0 $t1
+DEBUG executing SYSCALL
+DEBUG executing JR $ra
+DEBUG executing JAL to print_space
+DEBUG executing LI $v0 4
+DEBUG executing LA $a0 space
+DEBUG executing SYSCALL
+DEBUG executing JR $ra
+DEBUG executing MOVE $t2 $t0
+DEBUG executing MOVE $t0 $t1
+DEBUG executing ADD $t1 $t0 $t2
+DEBUG executing ADDI $t3 $t3 1
+DEBUG executing DIV $t1 $t7
+DEBUG executing MFHI $t8
+DEBUG executing BEQ $t8 $zero even
+DEBUG executing JUMP to odd
+DEBUG executing ADD $t6 $t6 $t1
+DEBUG executing BLT $t3 $t4 Loop
+DEBUG executing JAL to print_b
+DEBUG executing LI $v0 1
+DEBUG executing MOVE $a0 $t1
+DEBUG executing SYSCALL
+DEBUG executing JR $ra
+DEBUG executing JAL to print_space
+DEBUG executing LI $v0 4
+DEBUG executing LA $a0 space
+DEBUG executing SYSCALL
+DEBUG executing JR $ra
+DEBUG executing MOVE $t2 $t0
+DEBUG executing MOVE $t0 $t1
+DEBUG executing ADD $t1 $t0 $t2
+DEBUG executing ADDI $t3 $t3 1
+DEBUG executing DIV $t1 $t7
+DEBUG executing MFHI $t8
+DEBUG executing BEQ $t8 $zero even
+DEBUG executing JUMP to odd
+DEBUG executing ADD $t6 $t6 $t1
+DEBUG executing BLT $t3 $t4 Loop
+DEBUG executing JAL to print_b
+DEBUG executing LI $v0 1
+DEBUG executing MOVE $a0 $t1
+DEBUG executing SYSCALL
+DEBUG executing JR $ra
+DEBUG executing JAL to print_space
+DEBUG executing LI $v0 4
+DEBUG executing LA $a0 space
+DEBUG executing SYSCALL
+DEBUG executing JR $ra
+DEBUG executing MOVE $t2 $t0
+DEBUG executing MOVE $t0 $t1
+DEBUG executing ADD $t1 $t0 $t2
+DEBUG executing ADDI $t3 $t3 1
+DEBUG executing DIV $t1 $t7
+DEBUG executing MFHI $t8
+DEBUG executing BEQ $t8 $zero even
+DEBUG executing ADD $t5 $t5 $t1
+DEBUG executing BLT $t3 $t4 Loop
+DEBUG executing JAL to print_b
+DEBUG executing LI $v0 1
+DEBUG executing MOVE $a0 $t1
+DEBUG executing SYSCALL
+DEBUG executing JR $ra
+DEBUG executing JAL to print_space
+DEBUG executing LI $v0 4
+DEBUG executing LA $a0 space
+DEBUG executing SYSCALL
+DEBUG executing JR $ra
+DEBUG executing MOVE $t2 $t0
+DEBUG executing MOVE $t0 $t1
+DEBUG executing ADD $t1 $t0 $t2
+DEBUG executing ADDI $t3 $t3 1
+DEBUG executing DIV $t1 $t7
+DEBUG executing MFHI $t8
+DEBUG executing BEQ $t8 $zero even
+DEBUG executing JUMP to odd
+DEBUG executing ADD $t6 $t6 $t1
+DEBUG executing BLT $t3 $t4 Loop
+DEBUG executing JAL to print_b
+DEBUG executing LI $v0 1
+DEBUG executing MOVE $a0 $t1
+DEBUG executing SYSCALL
+DEBUG executing JR $ra
+DEBUG executing JAL to print_space
+DEBUG executing LI $v0 4
+DEBUG executing LA $a0 space
+DEBUG executing SYSCALL
+DEBUG executing JR $ra
+DEBUG executing MOVE $t2 $t0
+DEBUG executing MOVE $t0 $t1
+DEBUG executing ADD $t1 $t0 $t2
+DEBUG executing ADDI $t3 $t3 1
+DEBUG executing DIV $t1 $t7
+DEBUG executing MFHI $t8
+DEBUG executing BEQ $t8 $zero even
+DEBUG executing JUMP to odd
+DEBUG executing ADD $t6 $t6 $t1
+DEBUG executing BLT $t3 $t4 Loop
+DEBUG executing JUMP to end
+DEBUG executing JAL to print_b
+DEBUG executing LI $v0 1
+DEBUG executing MOVE $a0 $t1
+DEBUG executing SYSCALL
+DEBUG executing JR $ra
+DEBUG executing JAL to print_even_sum
+DEBUG executing LI $v0 4
+DEBUG executing LA $a0 even_str
+DEBUG executing SYSCALL
+DEBUG executing LI $v0 1
+DEBUG executing MOVE $a0 $t5
+DEBUG executing SYSCALL
+DEBUG executing JR $ra
+DEBUG executing JAL to print_odd_sum
+DEBUG executing LI $v0 4
+DEBUG executing LA $a0 odd_str
+DEBUG executing SYSCALL
+DEBUG executing LI $v0 1
+DEBUG executing MOVE $a0 $t6
+DEBUG executing SYSCALL
+DEBUG executing JR $ra

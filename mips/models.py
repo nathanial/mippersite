@@ -1,8 +1,18 @@
-from django.db import models
+from appengine_django.models import BaseModel
+from google.appengine.ext import db
 
-class UserProgram(models.Model):
-    name = models.CharField(maxlength=30, unique=True)
-    code = models.TextField()
+
+class StateInfo(BaseModel):
+    state_blob = db.BlobProperty()
+    suspended = db.BooleanProperty(default=False)
+    output = db.StringListProperty(default=[])
+
+class UserProgram(BaseModel):
+    name = db.StringProperty(required = True)
+    code = db.TextProperty()
+    user = db.UserProperty(required = True)
+    state = db.ReferenceProperty(StateInfo)
+
     def __cmp__(self, other):
         if self.name > other.name:
             return 1
@@ -10,4 +20,6 @@ class UserProgram(models.Model):
             return 0
         else:
             return -1
+
+
 

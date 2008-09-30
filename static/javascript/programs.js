@@ -13,20 +13,20 @@ function do_post(action, name_value){
 
 $(document).ready(function(){
     $('#proglist').children().click(function(){
-        window.location = "program/" + $(this).text() + "/";
+        window.location = $(this).text() + "/";
     });
     $('#add_button').click(function(event){
         event.preventDefault();
         var prog_name = prompt("Enter name of Program to Add");
         if(prog_name){
-            do_post("/mips/add/", prog_name);
+            do_post("/add/", prog_name);
         }
     });
     $('#del_button').click(function(event){
         event.preventDefault();
         var prog_name = prompt("Enter Name of Program to Delete");
         if(prog_name){
-            do_post("/mips/del/", prog_name);
+            do_post("/del/", prog_name);
         }
     });
 });

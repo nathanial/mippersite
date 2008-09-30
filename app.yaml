@@ -1,0 +1,21 @@
+application: mippersite
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+- url: /static
+  static_dir: static
+
+- url: /javascript
+  static_dir: static/javascript
+
+- url: /images
+  static_dir: static/images
+
+- url: /styles
+  static_dir: static/styles
+
+- url: /.*
+  script: main.py
+

@@ -79,12 +79,12 @@ $(document).ready(function(){
     });
     $('#home').click(function(event){
         event.preventDefault();
-        window.location = "/mips/";
+        window.location = "/programs/";
     });
     $('#run').click(function(event){
         event.preventDefault();
         var options = {
-            url: ('/mips/program/' + program_name + '/run/'),
+            url: ("/run/" + program_name + "/"),
             success: function(responseText, statusText) {
                 var data = eval("(" + responseText + ")");
                 if(data.exception){
@@ -108,10 +108,10 @@ $(document).ready(function(){
     });
     $('#update').click(function(event){
         event.preventDefault();
-        $('#code_form').attr('action', "/mips/program/" + program_name + "/update/").submit();
+        $('#code_form').attr('action', "/update/").submit();
     });
     $('#reset').click(function(event){
         event.preventDefault();
-        $('#code_form').attr('action', "/mips/program/" + program_name + "/reset/").submit();
+        $('#code_form').attr('action', "/reset/").submit();
     });
 });

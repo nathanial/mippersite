@@ -1,0 +1,26 @@
+{% extends "mips/base.html" %}
+
+{% block head %}
+<script type="text/javascript" src="/javascript/jquery.js"></script>
+<script type="text/javascript" src="/javascript/form.js"></script>
+<script type="text/javascript" src="/javascript/programs.js"></script>
+{% endblock %}
+
+{% block sidebar %}
+Programs
+<ul id="proglist">
+  {% for program in programs %}
+  <li><a href="#">{{ program.name }}</a></li>
+  {% endfor %}
+</ul>
+Commands
+<ul id="command_list">
+  <li><a id="add_button" href="#">Add Program</a></li>
+  <li><a id="del_button" href="#">Del Program</a></li>
+  <li><a id="logout" href="/logout/">Logout</a></li>
+</ul>
+{% endblock %}
+
+{% block content %}
+<p> Select a program to edit or view or run</p>
+{% endblock %}
