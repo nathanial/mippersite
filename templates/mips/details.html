@@ -17,19 +17,21 @@
 Commands
 <ul>
   <li><a id="home" href="#">Back</a></li>
-  <li><a id="logout" href="/logout/">Logout</a></li>
+  <li><a id="logout" href="{{logout_url}}">Logout</a></li>
 </ul>
 {% endblock %}
 
 {% block content %}
 <h4> {{program.name}} <span id="editable" style="display:none">(editable)</span></h4>
+<p><b>Run:</b> runs the program. If you insert the command BREAK into the text at any point (on its own line), the program will suspend at that point and render the current state of its registers and whatever output it has produced. Subsequent runs will continue on from the suspended point. </p>
+<p><b>Update:</b> saves any changes you've made to the program </p>
+<p><b>Reset:</b> if the program has been suspended by a BREAK, the reset button starts it over again.</>
 <form id="code_form" method="post">
   <input name="name" type="text" value="{{program.name}}" style="display:none" />
   <input id="update" type="submit" value="update" />
-  <input id="edit" type="submit" value="edit" />
   <input id="reset" type="submit" value="reset" />
   <input id="run" type="submit" value="run" />
-  <textarea name="code" id="code_view" class="code" rows="40" readonly="true">
+  <textarea name="code" id="code_view" class="code" rows="40">
 {{program.code}}</textarea>
 </form>
 <div id="blah">

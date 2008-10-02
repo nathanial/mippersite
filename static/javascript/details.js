@@ -1,15 +1,3 @@
-function code_view_is_editable(){
-    return $('#code_view').attr('readonly') == "";
-}
-function set_code_view_editable(){
-    $('#code_view').attr('readonly', '');
-    $('#editable').show();
-}
-function set_code_view_uneditable(){
-    $('#code_view').attr('readonly', 'true');
-    $('#editable').hide();
-}
-
 function create_output_panel(html){
     var output = new Ext.Panel({
         width: 200,
@@ -23,26 +11,12 @@ function create_output_panel(html){
 $(document).ready(function(){
 
     Ext.state.Manager.setProvider(new Ext.state.CookieProvider());
-    var output = new Ext.Panel({
-        width: 200,
-        height: 300,
-        margins   : '3 3 3 3',
-        title    : 'Output',
-        html     : ''
-    });
-    var memory = new Ext.Panel({
-        title : 'Memory',
-        width : 200,
-        height: 300,
-        margins : '3 0 3 3',
-        cmargins : '3 3 3 3',
-        html : ''
-    });
-
     var store = new Ext.data.JsonStore({
         root : 'registers',
         fields: ['name', {name: 'value', type: 'int'}]
     });
+
+    var output = create_output_panel("");
 
 
     var registers = new Ext.grid.GridPanel({
@@ -55,7 +29,7 @@ $(document).ready(function(){
         width: 225,
         height: 300,
         margins: '3 0 3 3',
-        title: 'Register Grid'
+        title: 'Registers'
     });
 
     var win = new Ext.Window({
@@ -65,18 +39,9 @@ $(document).ready(function(){
         autoWidth: true,
         autoHeight: true,
         layout   : 'column',
-        items    : [registers, memory, output]
+        items    : [registers, output]
     });
 
-    $('#edit').click(function(event){
-        event.preventDefault();
-        if(code_view_is_editable()){
-            set_code_view_uneditable();
-        }
-        else{
-            set_code_view_editable();
-        }
-    });
     $('#home').click(function(event){
         event.preventDefault();
         window.location = "/programs/";
@@ -88,18 +53,31 @@ $(document).ready(function(){
             success: function(responseText, statusText) {
                 var data = eval("(" + responseText + ")");
                 if(data.exception){
-                    alert("Exception : " + data.exception);
+                    var ex_msg = data.exception;
+                    var ex_lines = data.msg_list;
+                    var final_msg = "";
+                    for(var i = 0; i < ex_lines.length; i++){
+                        final_msg += ex_lines[i] + "<br />";
+                    }
+                    Ext.MessageBox.show({
+                        title: 'Exception',
+                        cls: 'black-text',
+                        msg: final_msg,
+                        buttons: Ext.MessageBox.OK,
+                        icon: Ext.MessageBox.ERROR
+                    });
                 }
                 else{
                     var lines = data.output;
-                    var htmlString = ""
-                    for(i = 0; i < lines.length; i++){
+                    var htmlString = "";
+                    for(var i = 0; i < lines.length; i++){
                         htmlString += lines[i] + "<br />";
                     }
                     store.loadData(data);
                     win.remove(output);
                     output = create_output_panel(htmlString);
                     win.add(output);
+                    win.doLayout();
                     win.show(Ext.get('run'));
                 }
             }

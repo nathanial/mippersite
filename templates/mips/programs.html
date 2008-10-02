@@ -17,10 +17,15 @@ Commands
 <ul id="command_list">
   <li><a id="add_button" href="#">Add Program</a></li>
   <li><a id="del_button" href="#">Del Program</a></li>
-  <li><a id="logout" href="/logout/">Logout</a></li>
+  <li><a id="logout" href="{{logout_url}}">Logout</a></li>
+  <li><a id="back" href="/">Back</a></li>
 </ul>
 {% endblock %}
 
 {% block content %}
-<p> Select a program to edit or view or run</p>
+{% if exception %}
+<p style="color:red;font-size:20px;"> {{exception}} </p>
+{% else %}
+<p> On this page you may either select a program from the list of programs on the left or add/delete a program using the commands in the command bar</p>
+{% endif %}
 {% endblock %}

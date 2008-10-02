@@ -3,9 +3,17 @@
 Commands
 <ul>
 {% if logged_in %}
-<li><a id="logout" href="/logout/">Logout</a></li>
+<li><a id="programs" href="/programs/">Programs</a></li>
+<li><a id="logout" href="{{logout_url}}">Logout</a></li>
 {% else %}
-<li><a id="login" href="/login/">Login</a></li>
+<li><a id="login" href="{{login_url}}">Login</a></li>
 {% endif %}
 </ul>
+{% endblock %}
+
+{% block content %}
+<p> This is Mipper, the Online Mips Interpreter: a somewhat buggy implementation of the Mips Assembly Language by Nathan Hartman. The source code for Mipper can be found at <a href="http://github.com/nathanial/mipper">github.com/nathanial/mipper</a> while the source code for the website itself can be found at <a href="http://github.com/nathanial/mippersite">github.com/nathanial/mippersite</a>.</p>
+<p>Please note that is this a super mega alpha version, which means that both the interpreter and the website are sure to be chock full of bugs. If you are so adventurous as to try out any of the functionality, please send any bug reports to <b>nathanial.hartman@gmail.com</b></p>
+<p>Further Details: Both the interpreter and this website were written in Python. The website uses Django, and is hosted on Google Appengine. The template for this website was created by willr--as per his request, there is a link to his website at the foot of this page. For the interpreter, the excellent Yapps2 parsing library was used. Special thanks to the Academy, my agent, my producer, all the great members of the cast, and now... the end. </p>
+<p>Final Warnings: this site is best viewed using firefox. For whatever reason, it can go a little nuts on Internet Explorer and Apple Safari. Hopefully I'll figure out what the problem is and fix it soon. </p>
 {% endblock %}
