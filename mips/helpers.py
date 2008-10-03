@@ -1,15 +1,11 @@
-import re
 import logging
-from mips.models import UserProgram, StateInfo
+from google.appengine.api import users
 
-def extract_registers(state):
-    non_numerical_key = re.compile(r"\$[a-z].*")
-    registers = []
-    for k,v in state.registers.items():
-        if non_numerical_key.match(k):
-            registers.append({'name': str(k), 'value': str(v)})
+def login_url():
+    return users.create_login_url("/programs/")
 
-    return registers
+def logout_url():
+    return users.create_logout_url("/")
 
 def format_output(output):
     return "".join(map(lambda x : str(x), output)).splitlines()

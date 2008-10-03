@@ -39,6 +39,21 @@ class GeneralTests(unittest.TestCase):
         selenium.click('xpath=//a[text()="example"]')
         selenium.wait_for_page_to_load(5000)
 
+    def do_run(self):
+        selenium = self.selenium
+        for i in range(0,10):
+            selenium.open("/run/example/")
+            self.failUnless(not selenium.is_text_present("Request information"))
+            self.failUnless(selenium.is_text_present("registers"))
+            self.failUnless(selenium.is_text_present("output"))
+
+        self.failUnless(selenium.is_text_present("1 1 2 3 5 8 13 21 34 55"))
+
+    def do_reset(self):
+        selenium = self.selenium
+        selenium.click("reset")
+        selenium.wait_for_page_to_load(5000)
+
     def test_login(self):
         selenium = self.selenium
         self.login()
@@ -72,13 +87,19 @@ class GeneralTests(unittest.TestCase):
     def test_run(self):
         selenium = self.selenium
         self.login()
-        for i in range(0,10):
-            selenium.open("/run/example/")
-            self.failUnless(not selenium.is_text_present("Request information"))
-            self.failUnless(selenium.is_text_present("registers"))
-            self.failUnless(selenium.is_text_present("output"))
+        self.do_run()
 
+        #Reset
+        selenium.open("/programs/")
+        self.get_details()
+        self.do_reset()
 
+        self.do_run()
+
+        #Reset
+        selenium.open("/programs/")
+        self.get_details()
+        self.do_reset()
 
     def tearDown(self):
         self.selenium.stop()
