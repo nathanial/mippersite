@@ -11,6 +11,7 @@ import pickle
 import logging
 import helpers
 from helpers import login_url, logout_url
+import time
 
 def Authenticated(view):
     def f(*args, **kwargs):
@@ -21,6 +22,18 @@ def Authenticated(view):
             return index(None)
     return f
 
+def NoCache(view):
+    def f(*args, **kwargs):
+        response = view(*args, **kwargs)
+        response['Expires'] = "Mon, 26 Jul 1997 05:00:00 GMT"
+        response['Last-Modified'] = time.strftime("%a, %d %b %Y %H:%M:%S")
+        response['cache-Control'] = "no-store, no-cache, must-revalidate, post-check = 0, pre-check = 0"
+        response['Pragma'] = "no-cache"
+        return response
+    return f
+
+
+@NoCache
 def index(request):
     logged_in = users.get_current_user() != None
     return render_to_response("mips/index.html",
@@ -29,6 +42,8 @@ def index(request):
                                'logout_url' : logout_url()
                                })
 
+
+@NoCache
 @Authenticated
 def programs(user, request):
     programs = UserProgram.fetch_max_for(user)
@@ -49,6 +64,7 @@ def programs(user, request):
         response.delete_cookie('exception')
         return response
 
+@NoCache
 @Authenticated
 def details(user, request, name):
     current_program = UserProgram.find(user, name)
@@ -56,6 +72,7 @@ def details(user, request, name):
                               {'program' : current_program,
                                'logout_url' : logout_url()})
 
+@NoCache
 @Authenticated
 def update(user, request):
     name = request.POST['name']
@@ -65,7 +82,7 @@ def update(user, request):
     UserProgram.store(program)
     return HttpResponseRedirect(reverse('mips.views.details',
                                         kwargs={'name': program.name}))
-
+@NoCache
 @Authenticated
 def add(user, request):
     name = request.POST['name']
@@ -79,6 +96,7 @@ def add(user, request):
         response.set_cookie('exception', msg)
         return response
 
+@NoCache
 @Authenticated
 def delete(user, request):
     name = request.POST['name']
@@ -92,6 +110,7 @@ def delete(user, request):
         response.set_cookie('exception', msg)
         return response
 
+@NoCache
 @Authenticated
 def reset(user, request):
     name = request.POST['name']
@@ -100,7 +119,7 @@ def reset(user, request):
     UserProgram.store(program)
     return HttpResponseRedirect(reverse('mips.views.details',
                                         kwargs={'name':program.name}))
-
+@NoCache
 @Authenticated
 def run(user, request, name):
     program = UserProgram.find(user, name)
@@ -133,6 +152,7 @@ def run(user, request, name):
                                      {'registers' : registers,
                                       'output' : output})
         return HttpResponse(json_data, mimetype="application/javascript")
+
     else:
         response = "{'exception': '%s', 'msg_list': %s}" % (
             result['exception'], result['msg_list'])
