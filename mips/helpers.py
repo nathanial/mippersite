@@ -25,13 +25,6 @@ def format_exception(ex, error_buf):
     logging.info(str(error_lines).replace("\n",""))
     return ex_str, str(error_lines)
 
-def find_program(user, name):
-    query = UserProgram.all()
-    query.filter("name = ", name)
-    query.filter("user = ", user)
-    program  = query.get()
-    return program
-
 def example_code():
     file = open("example.asm")
     code = ""
