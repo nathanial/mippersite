@@ -11,9 +11,14 @@ function do_post(action, name_value){
     document.body.removeChild(form);
 }
 
+function trim(s){
+    return s.replace(/^\s+|\s+$/g, "")
+}
+
 $(document).ready(function(){
     $('#proglist').children().click(function(){
-        window.location = $(this).text() + "/";
+        var url = trim($(this).text()) + "/";
+        window.location = url;
     });
     $('#add_button').click(function(event){
         event.preventDefault();

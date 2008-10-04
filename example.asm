@@ -72,5 +72,5 @@ end:
 
 .data
 space: .asciiz " "
-odd_str: .asciiz "\nOdd Sum = "
-even_str: .asciiz "\nEven Sum = "
+odd_str: .asciiz " Odd Sum = "
+even_str: .asciiz " Even Sum = "

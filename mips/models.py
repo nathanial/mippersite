@@ -92,6 +92,11 @@ class UserProgram(BaseModel):
         user_program.put()
 
     @Callable
+    def remove(user_program):
+        user_program.state_info.delete()
+        user_program.delete()
+
+    @Callable
     def fetch_max_for(user):
         query = UserProgram.all().filter("user =", user)
         if query.count() > 10:

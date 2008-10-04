@@ -1,6 +1,9 @@
 { "registers" : [
   {% for item in registers %}
-    { "name" : "{{item.name}}", "value" : {{item.value}} },
+    { "name" : "{{item.name}}", "value" : {{item.value}} }
+    {% if not forloop.last %}
+    ,
+    {% endif %}
   {% endfor %}
   ],
   "output" : {{output}}}

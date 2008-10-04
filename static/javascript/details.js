@@ -2,10 +2,13 @@ function create_output_panel(html){
     var output = new Ext.Panel({
         width: 200,
         height: 300,
-        margins : '3 3 3 3',
         title : 'Output',
         html : html});
     return output;
+}
+
+function trim(s){
+    return s.replace(/^\s+|\s+$/g,"");
 }
 
 $(document).ready(function(){
@@ -26,7 +29,7 @@ $(document).ready(function(){
             {id:'name', header:'Name', width: 100, sortable: true, dataIndex: 'name'},
             {header: 'Value', width: 100, sortable: true, dataIndex: 'value'}],
         stripeRows: true,
-        width: 225,
+        width: 200,
         height: 300,
         margins: '3 0 3 3',
         title: 'Registers'
@@ -36,8 +39,8 @@ $(document).ready(function(){
         title    : 'Console',
         closable : true,
         closeAction : 'hide',
-        autoWidth: true,
-        autoHeight: true,
+        width: 600,
+        height: 500,
         layout   : 'column',
         items    : [registers, output]
     });
@@ -48,6 +51,7 @@ $(document).ready(function(){
     });
     $('#run').click(function(event){
         event.preventDefault();
+        program_name = trim(program_name);
         var options = {
             url: ("/run/" + program_name + "/"),
             success: function(responseText, statusText) {
@@ -79,6 +83,7 @@ $(document).ready(function(){
                     win.add(output);
                     win.doLayout();
                     win.show(Ext.get('run'));
+                    win.doLayout();
                 }
             }
         };

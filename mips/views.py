@@ -67,9 +67,12 @@ def programs(user, request):
 @NoCache
 @Authenticated
 def details(user, request, name):
-    current_program = UserProgram.find(user, name)
+    program = UserProgram.find(user, name)
+    code = program.code
+    lines = code.splitlines()
     return render_to_response("mips/details.html",
-                              {'program' : current_program,
+                              {'program' : program,
+                               'code_lines' : lines,
                                'logout_url' : logout_url()})
 
 @NoCache
@@ -102,7 +105,7 @@ def delete(user, request):
     name = request.POST['name']
     prog = UserProgram.find(user, name)
     if prog:
-        prog.delete();
+        UserProgram.remove(prog)
         return HttpResponseRedirect(reverse('mips.views.programs'))
     else:
         msg = "Cannot delete program with name '%s'<br /> because it does not exist." % name
